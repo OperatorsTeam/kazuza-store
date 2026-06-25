@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 e2acf99191ffe60636c233fa961899b9a141abac Operators Team <operators.team@email.com> 1782368381 -0700	commit (initial): initial commit
+e2acf99191ffe60636c233fa961899b9a141abac e2acf99191ffe60636c233fa961899b9a141abac Operators Team <operators.team@email.com> 1782368629 -0700	Branch: renamed refs/heads/master to refs/heads/main
+e2acf99191ffe60636c233fa961899b9a141abac 9758c15fd795d8533b4e124bc8bf267a9b1b0827 Operators Team <operators.team@email.com> 1782373517 -0700	commit: Fix language switcher
+9758c15fd795d8533b4e124bc8bf267a9b1b0827 7c4b3b504a2659a2f991c6838ac9762635550627 Operators Team <operators.team@email.com> 1782374319 -0700	commit: Fix root locale redirect
+7c4b3b504a2659a2f991c6838ac9762635550627 0f05ff2c5235bea5cee04c7142dfd58a3fcd0f34 Operators Team <operators.team@email.com> 1782374588 -0700	commit: Fix locale routing system
+0f05ff2c5235bea5cee04c7142dfd58a3fcd0f34 fdbc842950dcbfacf10e76629d1209d9ac27101a Operators Team <operators.team@email.com> 1782382088 -0700	commit: Move middleware to root fix
