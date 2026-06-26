@@ -13,7 +13,7 @@ interface LocaleState {
 export const useLocaleStore = create<LocaleState>()(
   persist(
     (set, get) => ({
-      locale: 'ar',
+      locale: 'en',
       
       setLocale: (locale: Locale) => set({ locale }),
       

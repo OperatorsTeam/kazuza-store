@@ -26,9 +26,9 @@ export default function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
-  const paramLocale = params.locale
+  const { locale: paramLocale } = use(params)
 
   const currentLocale: Locale =
     locales.includes(paramLocale as Locale)

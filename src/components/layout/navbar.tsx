@@ -2,50 +2,53 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShoppingBag, Menu, X, Globe, User } from 'lucide-react'
+import { ShoppingBag, Menu, X, User } from 'lucide-react'
 import { useCartStore } from '@/store/cart'
 import { useLocaleStore } from '@/store/locale'
 import { t } from '@/lib/i18n'
 
 export default function Navbar() {
-  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const { getItemCount } = useCartStore()
-  const { locale, toggleLocale } = useLocaleStore()
+  const { locale } = useLocaleStore()
   const itemCount = getItemCount()
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
+
     window.addEventListener('scroll', handleScroll)
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  
+
   useEffect(() => {
     setIsOpen(false)
   }, [pathname])
-  
+
   const navLinks = [
     { href: `/${locale}`, label: t('nav.home', locale) },
     { href: `/${locale}/products`, label: t('nav.products', locale) },
     { href: `/${locale}/about`, label: t('nav.about', locale) },
   ]
-  
+
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href={`/${locale}`} className="flex-shrink-0">
-              <motion.span 
+              <motion.span
                 className="text-xl md:text-2xl font-bold tracking-[0.3em] text-white"
                 whileHover={{ letterSpacing: '0.4em' }}
                 transition={{ duration: 0.3 }}
@@ -53,7 +56,7 @@ export default function Navbar() {
                 KAZUZA
               </motion.span>
             </Link>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
@@ -70,43 +73,16 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            
+
             {/* Actions */}
             <div className="flex items-center gap-4">
-              {/* Language Toggle */}
-<button
-  onClick={() => {
-    const newLocale = locale === 'en' ? 'ar' : 'en'
-
-    toggleLocale()
-
-    const currentPath = pathname || '/'
-    const pathSegments = currentPath.split('/')
-
-    // تغيير اللغة في الرابط
-    if (pathSegments[1] === 'ar' || pathSegments[1] === 'en') {
-      pathSegments[1] = newLocale
-    } else {
-      pathSegments.splice(1, 0, newLocale)
-    }
-
-    router.push(pathSegments.join('/'))
-  }}
-  className="flex items-center gap-1 text-gray-400 hover:text-white transition-colors"
-  aria-label="Toggle language"
->
-  <Globe size={18} />
-  <span className="text-xs tracking-wider uppercase">
-    {locale === 'en' ? 'عربي' : 'EN'}
-  </span>
-</button>
-              
               {/* Cart */}
               <Link
                 href={`/${locale}/cart`}
                 className="relative text-gray-400 hover:text-white transition-colors"
               >
                 <ShoppingBag size={20} />
+
                 {itemCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
@@ -117,7 +93,7 @@ export default function Navbar() {
                   </motion.span>
                 )}
               </Link>
-              
+
               {/* Admin Link */}
               <Link
                 href="/admin"
@@ -125,7 +101,7 @@ export default function Navbar() {
               >
                 <User size={20} />
               </Link>
-              
+
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -138,7 +114,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      
+
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
@@ -169,7 +145,7 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -180,6 +156,7 @@ export default function Navbar() {
                   className="flex items-center gap-2 text-2xl tracking-widest uppercase text-gray-500 hover:text-white transition-colors"
                 >
                   {t('nav.cart', locale)}
+
                   {itemCount > 0 && (
                     <span className="bg-white text-black text-sm px-2 py-1 rounded-full">
                       {itemCount}
