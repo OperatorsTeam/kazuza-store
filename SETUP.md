@@ -14,9 +14,9 @@
 Copy `.env.example` to `.env.local` and fill in:
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+NEXT_PUBLIC_SUPABASE_URL=https://lapryqtwwzdelxifcouz.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcHJ5cXR3d3pkZWx4aWZjb3V6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMjA0ODAsImV4cCI6MjA5Nzg5NjQ4MH0.Awz7r7Y3flJFp9ydNYlgUrTUaOywKq9ZPMz8UyyrMNQ
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcHJ5cXR3d3pkZWx4aWZjb3V6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MjMyMDQ4MCwiZXhwIjoyMDk3ODk2NDgwfQ.vL7sFFLKcEc-XoX3LuDY5gCFCHU_VsRxt7PMuozUBiU
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ADMIN_EMAILS=admin@kazuza.com
 ```
